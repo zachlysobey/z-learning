@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\title{Basic Mathematics --- Chapter 1 Exercises}
+\author{Zach Lysobey}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Integers}
+
+No exercises in this section.
+
+\section{Rules for Addition}
+
+Justify each step, using commutativity and associativity in proving the
+following identities.
+
+\begin{enumerate}
+  \item $(a + b) + (c + d) = (a + d) + (b + c)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a + b) + (c + d)
+        &= a + (b + (c + d)) && \text{associativity} \\
+        &= a + ((c + d) + b) && \text{commutativity} \\
+        &= (a + d) + (b + c) && \text{associativity}
+    \end{align*}
+
+  \item $(a + b) + (c + d) = (a + c) + (b + d)$
+  \item $(a - b) + (c - d) = (a + c) + (-b - d)$
+  \item $(a - b) + (c - d) = (a + c) - (b + d)$
+  \item $(a - b) + (c - d) = (a - d) + (c - b)$
+  \item $(a - b) + (c - d) = -(b + d) + (a + c)$
+  \item $(a - b) + (c - d) = -(b + d) - (-a - c)$
+  \item $((x + y) + z) + w = (x + z) + (y + w)$
+  \item $(x - y) - (z - w) = (x + w) - y - z$
+  \item $(x - y) - (z - w) = (x - z) + (w - y)$
+  \item Show that $-(a + b + c) = -a + (-b) + (-c)$.
+  \item Show that $-(a - b - c) = -a + b + c$.
+  \item Show that $-(a - b) = b - a$.
+\end{enumerate}
+
+Solve for $x$ in the following equations.
+
+\begin{enumerate}[resume]
+  \item $-2 + x = 4$
+  \item $2 - x = 5$
+  \item $x - 3 = 7$
+  \item $-x + 4 = -1$
+  \item $4 - x = 8$
+  \item $-5 - x = -2$
+  \item $-7 + x = -10$
+  \item $-3 + x = 4$
+\end{enumerate}
+
+\begin{enumerate}[resume]
+  \item Prove the cancellation law for addition:
+    if $a + b = a + c$, then $b = c$.
+  \item Prove: if $a + b = a$, then $b = 0$.
+\end{enumerate}
+
+\section{Rules for Multiplication}
+
+% TODO: transcribe when we reach the end of §3 in the notes.
+
+\end{document}

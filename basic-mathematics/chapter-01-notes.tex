@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem*{remark}{Remark}
+
+\title{Basic Mathematics --- Chapter 1 Notes}
+\author{Zach Lysobey}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Integers}
+
+\begin{definition}
+  An \emph{integer} is a whole number, positive, negative, or zero:
+  $\ldots, -2, -1, 0, 1, 2, \ldots$
+\end{definition}
+
+\begin{definition}
+  The integers $1, 2, 3, \ldots$ are called the \emph{positive integers}.
+\end{definition}
+
+\begin{definition}
+  An integer that is either $0$ or positive is called a \emph{natural
+  number}. Thus the natural numbers are $0, 1, 2, 3, \ldots$
+\end{definition}
+
+\begin{remark}
+  Note Lang's convention: $0$ \emph{is} a natural number. Some books use
+  ``natural numbers'' to mean only the positive integers $1, 2, 3, \ldots$
+\end{remark}
+
+\begin{definition}
+  When the integers are pictured as points on a line, the point
+  corresponding to $0$ is called the \emph{origin}. Positive integers lie
+  to the right of the origin, negative integers to the left.
+\end{definition}
+
+\subsection*{First rules for addition}
+
+On the number line, adding a positive integer means moving that many
+units to the right; adding a negative integer means moving to the left.
+Two rules are taken as assumptions:
+
+\begin{description}
+  \item[N1.] $a + 0 = a$ \quad for any integer $a$.
+  \item[N2.] $a + (-a) = 0$ \quad and also \quad $-a + a = 0$.
+\end{description}
+
+Geometrically, N2 says that $a$ and $-a$ lie on opposite sides of the
+origin, at the same distance.
+
+\begin{definition}
+  Because of the property $a + (-a) = 0$ (rule N2), the number $-a$ is
+  called the \emph{additive inverse} of $a$: it is the number which,
+  added to $a$, gives $0$.
+\end{definition}
+
+\subsection*{``Minus'' vs.\ ``negative''}
+
+For any number $a$, the number $-a$ should be read ``minus $a$,'' not
+``negative $a$.'' The reason: $-a$ is not necessarily negative. If $a$ is
+itself negative, then $-a$ is positive; for instance, if $a = -3$, then
+$-a = -(-3) = 3$. So ``negative $a$'' wrongly suggests that $-a$ is a
+negative number, while ``minus $a$'' just names the operation of taking
+the additive inverse. The word \emph{negative} is reserved for numbers
+less than $0$.
+
+\section{Rules for Addition}
+
+Addition of integers obeys two basic rules. Like N1 and N2, these are
+assumed, not proved; other rules are then proved from them.
+
+\begin{description}
+  \item[Commutativity.] If $a$, $b$ are integers, then
+    \[ a + b = b + a. \]
+  \item[Associativity.] If $a$, $b$, $c$ are integers, then
+    \[ (a + b) + c = a + (b + c). \]
+\end{description}
+
+Because of associativity, parentheses are unnecessary in a sum of several
+terms: we simply write $a + b + c$. By applying associativity and
+commutativity repeatedly, a sum of integers can be taken in any order.
+
+As a matter of convention, we write
+\[ a - b \quad \text{instead of} \quad a + (-b). \]
+Subtraction is not a new operation: it is addition of the additive
+inverse.
+
+From the rules above we can prove:
+
+\begin{description}
+  \item[N3.] If $a + b = 0$, then $b = -a$ and $a = -b$.
+\end{description}
+
+\begin{proof}
+  Add $-a$ to both sides of $a + b = 0$. The left side is
+  $-a + a + b = 0 + b = b$, and the right side is $-a + 0 = -a$, so
+  $b = -a$. Similarly, adding $-b$ to both sides gives $a = -b$.
+\end{proof}
+
+In words: the additive inverse of $a$ is the \emph{only} number that
+added to $a$ gives $0$.
+
+\begin{description}
+  \item[N4.] $a = -(-a)$ \quad for every integer $a$.
+\end{description}
+
+\begin{proof}
+  We have $-a + a = 0$ by N2. Apply N3 to this sum (with $-a$ in the
+  role of $a$, and $a$ in the role of $b$): it gives $a = -(-a)$.
+\end{proof}
+
+Note that N4 holds whether $a$ is positive, negative, or $0$. Piling up
+minus signs in front of $a$ gives $a$ or $-a$ alternately:
+$3 = -(-3) = -(-(-(-3)))$.
+
+\begin{remark}[Parsing repeated plus and minus signs]
+  A minus sign binds only to the single term immediately after it. Thus
+  \[ 1 + 2 - 3 + 4 \quad \text{means} \quad 1 + 2 + (-3) + 4 = 4, \]
+  and once every term is written as an addition, associativity lets us
+  regroup freely, e.g.\ as $1 + 2 + (-3 + 4)$. It does \emph{not} mean
+  \[ 1 + 2 - (3 + 4) = -4. \]
+  To subtract a whole group of terms, the parentheses must be written
+  explicitly --- and then the minus sign distributes over the group
+  (rule N5, below).
+\end{remark}
+
+For any integers $a$, $b$ we have $-(a + b) = -a + (-b)$, or in other
+words:
+
+\begin{description}
+  \item[N5.] $-(a + b) = -a - b$.
+\end{description}
+
+\begin{proof}
+  By N3, to show that $-a - b$ is the additive inverse of $a + b$, it
+  suffices to show that the two add to $0$. And indeed
+  \begin{align*}
+    (a + b) + (-a - b) &= a + b - a - b \\
+                       &= a - a + b - b
+                          && \text{by commutativity and associativity} \\
+                       &= 0 + 0 = 0. \qedhere
+  \end{align*}
+\end{proof}
+
+\begin{example}
+  \begin{align*}
+    -(3 + 5)  &= -3 - 5 = -8, \\
+    -(-4 + 5) &= -(-4) - 5 = 4 - 5 = -1, \\
+    -(3 - 7)  &= -3 - (-7) = -3 + 7 = 4.
+  \end{align*}
+  Be careful when taking the negative of a sum which itself involves
+  negative numbers: each term's sign flips, using $-(-a) = a$ where
+  needed.
+\end{example}
+
+\section{Rules for Multiplication}
+
+\end{document}
