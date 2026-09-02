@@ -1,0 +1,137 @@
+/* Shared stylesheet for helix lessons and reference sheets.
+   Tufte-ish: narrow measure, generous margins, sidenotes, print-friendly. */
+
+:root {
+  --ink: #1a1a1a;
+  --muted: #666;
+  --rule: #ddd;
+  --accent: #6b4fbb;      /* helix purple */
+  --key-bg: #f4f2fa;
+  --key-border: #cfc7e6;
+  --paper: #fffef9;
+  --measure: 40rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e6e3;
+    --muted: #9a9a9a;
+    --rule: #333;
+    --accent: #b39ddb;
+    --key-bg: #2a2636;
+    --key-border: #4a4260;
+    --paper: #16151a;
+  }
+}
+
+html { font-size: 18px; }
+body {
+  margin: 0;
+  padding: 3rem 1.5rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  line-height: 1.55;
+}
+main { max-width: var(--measure); margin: 0 auto; }
+
+h1 { font-weight: 400; font-size: 2.2rem; line-height: 1.1; margin: 0 0 .25rem; }
+h2 { font-weight: 400; font-style: italic; font-size: 1.5rem; margin: 2.5rem 0 .5rem; }
+h3 { font-weight: 600; font-size: 1.05rem; margin: 1.8rem 0 .4rem; }
+p  { margin: .8rem 0; }
+.subtitle { color: var(--muted); font-style: italic; margin: 0 0 2rem; }
+.lede { font-size: 1.1rem; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--key-border); }
+a:hover { border-bottom-color: var(--accent); }
+
+kbd {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: .85em;
+  background: var(--key-bg);
+  border: 1px solid var(--key-border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: .05em .4em;
+  white-space: nowrap;
+}
+code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: .85em;
+  background: var(--key-bg);
+  padding: .05em .3em;
+  border-radius: 3px;
+}
+pre {
+  background: var(--key-bg);
+  border-left: 3px solid var(--accent);
+  padding: .8rem 1rem;
+  overflow-x: auto;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: .95rem; }
+th, td { text-align: left; padding: .4rem .6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; font-size: .85rem; letter-spacing: .03em; text-transform: uppercase; color: var(--muted); }
+
+.note, .aside {
+  border-left: 3px solid var(--rule);
+  padding: .2rem 1rem;
+  color: var(--muted);
+  font-size: .95rem;
+  margin: 1.2rem 0;
+}
+.mission {
+  border: 1px solid var(--key-border);
+  background: var(--key-bg);
+  padding: .8rem 1rem;
+  border-radius: 6px;
+  font-size: .95rem;
+}
+.mission strong { color: var(--accent); }
+
+/* Task blocks: things to do in a real terminal */
+.task {
+  border: 1px solid var(--key-border);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+}
+.task h3 { margin-top: 0; }
+.task ol { padding-left: 1.3rem; }
+.task li { margin: .4rem 0; }
+
+/* Quiz widget (see assets/quiz.js) */
+.quiz { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 1rem 0; margin: 2rem 0; }
+.quiz .q { margin: 1.2rem 0; }
+.quiz .q p { margin: 0 0 .5rem; font-weight: 600; }
+.quiz button.opt {
+  display: block; width: 100%; text-align: left;
+  font: inherit; font-size: .95rem;
+  background: none; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: .45rem .7rem; margin: .3rem 0; cursor: pointer;
+}
+.quiz button.opt:hover { border-color: var(--accent); }
+.quiz button.opt.right { border-color: #3a9d5d; background: rgba(58,157,93,.12); }
+.quiz button.opt.wrong { border-color: #c0392b; background: rgba(192,57,43,.12); }
+.quiz .why { font-size: .9rem; color: var(--muted); margin-top: .4rem; display: none; }
+.quiz .q.answered .why { display: block; }
+.quiz .score { font-weight: 600; margin-top: 1rem; }
+
+footer {
+  margin-top: 4rem; padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: .9rem;
+}
+nav.crumbs { font-size: .85rem; color: var(--muted); margin-bottom: 2rem; }
+nav.crumbs a { border: none; }
+
+@media print {
+  html { font-size: 11pt; }
+  body { padding: 0; background: #fff; color: #000; }
+  a { color: #000; border: none; }
+  .quiz, .no-print { display: none; }
+}
