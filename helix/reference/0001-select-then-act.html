@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helix reference — Select, then act</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  main { max-width: 46rem; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+  @media (max-width: 40rem) { .cols { grid-template-columns: 1fr; } }
+  table { font-size: .9rem; }
+  td:first-child { white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<nav class="crumbs"><a href="../README.md">helix</a> · Reference 0001 · from <a href="../lessons/0001-select-then-act.html">Lesson 1</a></nav>
+<h1>Select, then act</h1>
+<p class="subtitle">There is always a selection. Movements move it; one key acts on it. Verified against the
+<a href="https://docs.helix-editor.com/keymap.html">keymap</a> for Helix 25.07.</p>
+
+<div class="cols">
+<div>
+<h3>Make a selection</h3>
+<table>
+<tr><td><kbd>w</kbd> / <kbd>b</kbd> / <kbd>e</kbd></td><td>to next word start / prev word start / next word end</td></tr>
+<tr><td><kbd>W</kbd> / <kbd>B</kbd> / <kbd>E</kbd></td><td>same, but WORDs (whitespace-delimited)</td></tr>
+<tr><td><kbd>x</kbd></td><td>current line; again = extend one more line</td></tr>
+<tr><td><kbd>X</kbd></td><td>extend selection to line bounds</td></tr>
+<tr><td><kbd>%</kbd></td><td>entire file</td></tr>
+<tr><td><kbd>f</kbd>c / <kbd>t</kbd>c</td><td>to / till next char <code>c</code> (crosses lines)</td></tr>
+<tr><td><kbd>v</kbd></td><td>select mode: movements extend instead of replace</td></tr>
+<tr><td><kbd>3</kbd><kbd>w</kbd></td><td>counts work: three words</td></tr>
+</table>
+
+<h3>Adjust a selection</h3>
+<table>
+<tr><td><kbd>;</kbd></td><td>collapse to a single cursor</td></tr>
+<tr><td><kbd>Alt</kbd>+<kbd>;</kbd></td><td>flip cursor and anchor</td></tr>
+<tr><td><kbd>,</kbd></td><td>keep only the primary selection</td></tr>
+</table>
+</div>
+
+<div>
+<h3>Act on it</h3>
+<table>
+<tr><td><kbd>d</kbd></td><td>delete</td></tr>
+<tr><td><kbd>c</kbd></td><td>change (delete + insert mode)</td></tr>
+<tr><td><kbd>y</kbd> / <kbd>p</kbd> / <kbd>P</kbd></td><td>yank / paste after / paste before</td></tr>
+<tr><td><kbd>i</kbd> / <kbd>a</kbd></td><td>insert before / after the selection</td></tr>
+<tr><td><kbd>I</kbd> / <kbd>A</kbd></td><td>insert at line start / line end</td></tr>
+<tr><td><kbd>u</kbd> / <kbd>U</kbd></td><td>undo / redo</td></tr>
+</table>
+
+<h3>Goto (<kbd>g</kbd> prefix)</h3>
+<table>
+<tr><td><kbd>g</kbd><kbd>h</kbd> / <kbd>g</kbd><kbd>l</kbd></td><td>line start / line end</td></tr>
+<tr><td><kbd>g</kbd><kbd>s</kbd></td><td>first non-blank char</td></tr>
+<tr><td><kbd>g</kbd><kbd>g</kbd> / <kbd>g</kbd><kbd>e</kbd></td><td>file start / file end</td></tr>
+</table>
+</div>
+</div>
+
+<h3>vim → Helix, the ones that bite</h3>
+<table>
+<tr><th>vim</th><th>Helix</th><th></th><th>vim</th><th>Helix</th></tr>
+<tr><td><code>dw</code></td><td><code>wd</code></td><td></td><td><code>$</code> / <code>0</code> / <code>^</code></td><td><code>gl</code> / <code>gh</code> / <code>gs</code></td></tr>
+<tr><td><code>cw</code></td><td><code>ec</code></td><td></td><td><code>G</code></td><td><code>ge</code></td></tr>
+<tr><td><code>dd</code></td><td><code>xd</code></td><td></td><td><code>D</code></td><td><code>vgld</code></td></tr>
+<tr><td><code>yy</code></td><td><code>xy</code></td><td></td><td><code>%</code> (bracket)</td><td><code>mm</code></td></tr>
+<tr><td><code>x</code> (char)</td><td><code>d</code></td><td></td><td><code>ggVG</code></td><td><code>%</code></td></tr>
+</table>
+<p class="aside">Sources: <a href="https://docs.helix-editor.com/keymap.html">keymap</a>,
+<a href="https://github.com/helix-editor/helix/wiki/Migrating-from-Vim">Migrating from Vim</a>. Tutor: <code>hx --tutor</code>, chapters 1 and 3.</p>
+</main>
+</body>
+</html>

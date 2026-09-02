@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — Select, then act</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+<nav class="crumbs"><a href="../README.md">helix</a> · Lesson 0001 · <a href="../reference/0001-select-then-act.html">reference sheet</a></nav>
+
+<h1>Select, then act</h1>
+<p class="subtitle">The one idea that makes every other Helix key make sense.</p>
+
+<div class="mission"><strong>Mission link.</strong> You want Helix to replace VS Code for real editing.
+In an IDE you always <em>see</em> what you've selected before you hit delete. Helix works the same
+way, in the keyboard. This lesson installs that rhythm; multiple cursors, later, are just this idea
+with more than one selection.</div>
+
+<h2>The idea</h2>
+<p class="lede">In Helix there is <strong>always a selection</strong>. The cursor is just a one-character selection.
+Movement keys don't move a cursor, they <em>move a selection</em>. Then a single key acts on it.</p>
+
+<p>So where vim says <kbd>d</kbd><kbd>w</kbd> (verb, then object), Helix says
+<kbd>w</kbd><kbd>d</kbd>: <kbd>w</kbd> selects up to the next word start, and you can <em>see</em> the
+highlight before <kbd>d</kbd> deletes it. If the selection is wrong, you notice before anything happens.
+(<a href="https://docs.helix-editor.com/usage.html">docs: Usage</a>)</p>
+
+<h3>Six keys to own today</h3>
+<table>
+<tr><th>Key</th><th>What it does</th><th>Source</th></tr>
+<tr><td><kbd>w</kbd> <kbd>b</kbd> <kbd>e</kbd></td><td>Select to next word start / previous word start / next word end</td><td><a href="https://docs.helix-editor.com/keymap.html#movement">keymap: movement</a></td></tr>
+<tr><td><kbd>x</kbd></td><td>Select the current line; press again to extend to the next line</td><td><a href="https://docs.helix-editor.com/keymap.html#selection-manipulation">keymap: selection</a></td></tr>
+<tr><td><kbd>;</kbd></td><td>Collapse the selection back to a single cursor</td><td>same</td></tr>
+<tr><td><kbd>d</kbd></td><td>Delete the selection</td><td><a href="https://docs.helix-editor.com/keymap.html#changes">keymap: changes</a></td></tr>
+<tr><td><kbd>c</kbd></td><td>Change: delete the selection and enter insert mode</td><td>same</td></tr>
+<tr><td><kbd>v</kbd></td><td>Select (extend) mode: movements <em>grow</em> the selection instead of replacing it</td><td><a href="https://docs.helix-editor.com/keymap.html#select--extend-mode">keymap: select mode</a></td></tr>
+</table>
+
+<h3>Translating your vim habits</h3>
+<table>
+<tr><th>You want to</th><th>vim</th><th>Helix</th><th>Read it as</th></tr>
+<tr><td>delete a word</td><td><code>dw</code></td><td><code>wd</code></td><td>select word, delete</td></tr>
+<tr><td>change a word</td><td><code>cw</code></td><td><code>ec</code></td><td>select to word end, change</td></tr>
+<tr><td>delete a line</td><td><code>dd</code></td><td><code>xd</code></td><td>select line, delete</td></tr>
+<tr><td>delete 3 lines</td><td><code>3dd</code></td><td><code>xxxd</code> or <code>3xd</code></td><td>select three lines, delete</td></tr>
+<tr><td>delete to end of line</td><td><code>D</code></td><td><code>vgld</code></td><td>extend to line end, delete</td></tr>
+<tr><td>go to line end</td><td><code>$</code></td><td><code>gl</code></td><td>goto line-end</td></tr>
+</table>
+<p class="aside">Full table: <a href="https://github.com/helix-editor/helix/wiki/Migrating-from-Vim">wiki: Migrating from Vim</a>.
+Julia Evans, after 20 years of vim, says the switch took "a week or two" and advises learning the Helix way rather than remapping it to vim
+(<a href="https://jvns.ca/blog/2025/10/10/notes-on-switching-to-helix-from-vim/">her notes</a>).</p>
+
+<div class="note">One trap: after <kbd>w</kbd> the selection is highlighted, and a plain <kbd>i</kbd> inserts <em>before</em> that
+selection, <kbd>a</kbd> after it. If you just want a cursor, press <kbd>;</kbd> first. The selection never silently goes away.</div>
+
+<h2>Do it</h2>
+
+<div class="task">
+<h3>Task 1 — the tutor, targeted (≈10 min)</h3>
+<ol>
+<li>Run <code>hx --tutor</code>.</li>
+<li>Do sections <strong>1.3 Deletion</strong>, then <strong>3.1 through 3.4</strong> (motions, selections, words, change), then <strong>3.7 and 3.8</strong> (selecting lines, collapsing). Skip the rest for now.</li>
+<li>Quit with <code>:q!</code>. The tutor is a scratch copy; nothing to save.</li>
+</ol>
+</div>
+
+<div class="task">
+<h3>Task 2 — a real file, with a check (≈5 min)</h3>
+<p>Create the file, edit it in Helix using only the keys above, then run the check. The check prints nothing when you got it right.</p>
+<pre><code>cat &gt; /tmp/hx-lesson1.txt &lt;&lt;'TXT'
+the quickly brown fox
+jumps over the lazy dog
+this line should be deleted entirely
+colour = blue
+keep this last line
+TXT
+hx /tmp/hx-lesson1.txt</code></pre>
+<p>Make these four edits, in order:</p>
+<ol>
+<li>Line 1: delete the word <code>quickly </code> (with its trailing space) → <code>the brown fox</code>. Hint: put the cursor on the <code>q</code>, then <kbd>w</kbd><kbd>d</kbd>.</li>
+<li>Line 2: change <code>lazy</code> to <code>sleepy</code>. Hint: on the <code>l</code>, <kbd>e</kbd><kbd>c</kbd>, type, <kbd>Esc</kbd>.</li>
+<li>Line 3: delete the whole line. Hint: <kbd>x</kbd><kbd>d</kbd>.</li>
+<li>Line 4 (now line 3): change <code>blue</code> to <code>green</code>. Try it backwards: put the cursor on the last letter of <code>blue</code>, then <kbd>b</kbd><kbd>c</kbd>. <kbd>b</kbd> selects back to the word start, including the character you started on.</li>
+</ol>
+<p>Save and quit with <code>:wq</code>, then:</p>
+<pre><code>diff /tmp/hx-lesson1.txt - &lt;&lt;'TXT'
+the brown fox
+jumps over the sleepy dog
+colour = green
+keep this last line
+TXT
+</code></pre>
+<p>Any output is a diff between what you produced and what was expected. Fix and re-run until it's silent.
+If a key did something you didn't expect, <kbd>u</kbd> undoes it.</p>
+</div>
+
+<h2>Check yourself</h2>
+<p>Answer from memory, before looking back up the page.</p>
+<div class="quiz" data-quiz></div>
+
+<h2>Where this goes next</h2>
+<p>Everything you'll learn later is this rhythm with a smarter first half: <kbd>s</kbd> selects every regex match
+<em>inside</em> the current selection, giving you one cursor per match, and then <kbd>c</kbd> changes all of them at once.
+That's the IDE's "select all occurrences", built from the same two-step you just practiced.</p>
+
+<p><strong>Primary source:</strong> the built-in tutor (<code>hx --tutor</code>) and the
+<a href="https://docs.helix-editor.com/keymap.html">keymap reference</a>. Keep the
+<a href="../reference/0001-select-then-act.html">one-page reference sheet</a> open beside your terminal this week.</p>
+
+<footer>
+<p>Anything unclear, or a key that didn't behave as described? Ask your teacher in Claude Code — that's what it's for.
+Come back to this lesson in a few days and redo Task 2 without the hints.</p>
+</footer>
+</main>
+
+<script src="../assets/quiz.js"></script>
+<script>
+Quiz(document.querySelector('[data-quiz]'), [
+  { q: 'Delete the word under the cursor (vim: dw).',
+    opts: ['wd', 'dw', 'xd', 'ed'], a: 0,
+    why: 'w selects to the next word start, d deletes the selection.' },
+  { q: 'Delete the whole current line (vim: dd).',
+    opts: ['xd', 'dd', 'ld', 'Xd'], a: 0,
+    why: 'x selects the current line; d deletes it. (X extends an existing selection to line bounds.)' },
+  { q: 'You pressed w and have a highlighted word, but only want a cursor. Which key?',
+    opts: [';', ',', 'v', 'x'], a: 0,
+    why: '; collapses the selection onto a single cursor. , keeps only the primary selection (multi-cursor).' },
+  { q: 'Which key makes later movements extend the selection instead of replacing it?',
+    opts: ['v', 'V', 'x', 's'], a: 0,
+    why: 'v enters select/extend mode; movements then grow the selection.' },
+  { q: 'Change from the cursor to the end of the current word (vim: cw).',
+    opts: ['ec', 'cw', 'wc', 'bc'], a: 0,
+    why: 'e selects to word end (no trailing space), c changes it. wc also works but eats the space.' },
+]);
+</script>
+</body>
+</html>
