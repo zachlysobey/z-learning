@@ -1,0 +1,56 @@
+# Build the basic-mathematics LaTeX notes and publish the PDFs to a rolling
+# GitHub Release tagged `basic-mathematics-latest`, recreated on every push
+# to main that touches the .tex files. Download URLs stay stable:
+#   https://github.com/zachlysobey/z-learning/releases/download/basic-mathematics-latest/<file>.pdf
+name: basic-mathematics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - basic-mathematics/**.tex
+      - .github/workflows/basic-mathematics.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache tectonic package bundle
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Tectonic
+          key: ${{ runner.os }}-tectonic-${{ hashFiles('basic-mathematics/*.tex') }}
+          restore-keys: |
+            ${{ runner.os }}-tectonic-
+
+      - uses: wtfjoke/setup-tectonic@v4
+
+      - name: Build PDFs
+        working-directory: basic-mathematics
+        run: |
+          mkdir -p out
+          for f in *.tex; do
+            tectonic --outdir out "$f"
+          done
+          ls -l out/
+
+      - name: Publish rolling release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: basic-mathematics-latest
+        run: |
+          gh release delete "$TAG" --cleanup-tag --yes || true
+          gh release create "$TAG" basic-mathematics/out/*.pdf \
+            --title "Basic Mathematics notes (latest)" \
+            --notes "Built from ${GITHUB_SHA} on $(date -u +%F)." \
+            --latest=false

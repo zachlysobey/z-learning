@@ -26,3 +26,12 @@ Skim (one window per document), then watches (via `entr`): every save rebuilds
 just the changed file and tells Skim to reload just that PDF. Ctrl-C to stop.
 
 Requires `tectonic` and `entr` (both via Homebrew) and [Skim](https://skim-app.sourceforge.io/).
+
+## Published PDFs
+
+Every push to `main` that touches a `.tex` file here rebuilds all the PDFs and
+attaches them to the rolling
+[`basic-mathematics-latest`](https://github.com/zachlysobey/z-learning/releases/tag/basic-mathematics-latest)
+release (see `.github/workflows/basic-mathematics.yml`). Direct links follow
+the pattern
+`https://github.com/zachlysobey/z-learning/releases/download/basic-mathematics-latest/chapter-01-notes.pdf`.

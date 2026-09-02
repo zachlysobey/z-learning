@@ -21,6 +21,10 @@ before adding content to the notes.
 - These are Zach's study notes: when asked to help, prefer explaining and scaffolding over writing complete solutions to exercises.
 - Do not edit the `chapter-NN-exercises.tex` files unless Zach explicitly asks for a specific change — working the solutions (including the LaTeX) is the point. When reviewing his answers, give feedback in the conversation instead.
 - LaTeX build artifacts (`.aux`, `.log`, `.pdf`, etc.) are not committed.
+  Pushes to `main` build every `.tex` here and publish the PDFs to the rolling
+  `basic-mathematics-latest` GitHub Release via
+  `.github/workflows/basic-mathematics.yml`; new chapters are picked up by the
+  glob, no workflow edit needed.
 - Build with `tectonic <file>.tex`. Zach often has `./watch.sh` running
   (entr + Skim live preview; no args = watch every `.tex` here), so saving a
   `.tex` file already triggers a rebuild — don't start watch loops or extra
