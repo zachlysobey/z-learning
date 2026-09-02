@@ -19,6 +19,7 @@ before adding content to the notes.
 - The book's named rules (N1–N12, Commutativity, etc.) are set with `description`
   lists (`\item[N1.]`), not `itemize` — long bracketed labels overflow itemize's margin.
 - These are Zach's study notes: when asked to help, prefer explaining and scaffolding over writing complete solutions to exercises.
+- Do not edit the `chapter-NN-exercises.tex` files unless Zach explicitly asks for a specific change — working the solutions (including the LaTeX) is the point. When reviewing his answers, give feedback in the conversation instead.
 - LaTeX build artifacts (`.aux`, `.log`, `.pdf`, etc.) are not committed.
 - Build with `tectonic <file>.tex`. Zach often has `./watch.sh` running
   (entr + Skim live preview; no args = watch every `.tex` here), so saving a
