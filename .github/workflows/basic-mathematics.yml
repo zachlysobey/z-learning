@@ -52,5 +52,5 @@ jobs:
           gh release delete "$TAG" --cleanup-tag --yes || true
           gh release create "$TAG" basic-mathematics/out/*.pdf \
             --title "Basic Mathematics notes (latest)" \
-            --notes "Built from ${GITHUB_SHA} on $(date -u +%F)." \
+            --notes "Built from ${GITHUB_SHA} on $(TZ=America/New_York date +%F)." \
             --latest=false
