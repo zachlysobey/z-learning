@@ -5,3 +5,6 @@
 *.out
 *.toc
 *.synctex.gz
+
+# Generated Pages site
+_site/

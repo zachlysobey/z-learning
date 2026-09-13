@@ -24,7 +24,9 @@ before adding content to the notes.
   Pushes to `main` build every `.tex` here and publish the PDFs to the rolling
   `basic-mathematics-latest` GitHub Release via
   `.github/workflows/basic-mathematics.yml`; new chapters are picked up by the
-  glob, no workflow edit needed.
+  glob, no workflow edit needed. The same PDFs are listed on this topic's page
+  on the site. `basic-mathematics-serge-lang.pdf` is never published: only a PDF
+  with a matching `.tex` beside it is.
 - Build with `tectonic <file>.tex`. Zach often has `./watch.sh` running
   (entr + Skim live preview; no args = watch every `.tex` here), so saving a
   `.tex` file already triggers a rebuild — don't start watch loops or extra

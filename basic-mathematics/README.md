@@ -29,8 +29,11 @@ Requires `tectonic` and `entr` (both via Homebrew) and [Skim](https://skim-app.s
 
 ## Published PDFs
 
-Every push to `main` that touches a `.tex` file here rebuilds all the PDFs and
-attaches them to the rolling
+The PDFs are published two ways. They are on the site at
+<https://zachlysobey.github.io/z-learning/basic-mathematics/>, rebuilt on every
+push to `main`.
+
+They are also attached to the rolling
 [`basic-mathematics-latest`](https://github.com/zachlysobey/z-learning/releases/tag/basic-mathematics-latest)
 release (see `.github/workflows/basic-mathematics.yml`). Direct links follow
 the pattern
