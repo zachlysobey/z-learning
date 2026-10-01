@@ -48,12 +48,95 @@ following identities.
     \end{align*}
 
   \item $(a - b) + (c - d) = (a + c) + (-b - d)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a - b) + (c - d)
+        &= a + (-b + (c - d)) && \text{associativity} \\
+        &= a + (-b + (-d + c)) && \text{commutativity} \\
+        &= a + ((-b - d) + c) && \text{associativity} \\
+        &= a + (c + (-b - d)) && \text{commutativity} \\
+        &= (a + c) + (-b - d) && \text{associativity}
+    \end{align*}
+
   \item $(a - b) + (c - d) = (a + c) - (b + d)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a - b) + (c - d)
+        &= a + (-b + (c - d)) && \text{associativity} \\
+        &= a + ((c - d) - b) && \text{commutativity} \\
+        &= a + (c + (-d - b)) && \text{associativity} \\
+        &= (a + c) + (-d - b) && \text{associativity} \\
+        &= (a + c) + (-b - d) && \text{commutativity} \\
+        &= (a + c) - (b + d) && \text{N5}
+    \end{align*}
+
   \item $(a - b) + (c - d) = (a - d) + (c - b)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a - b) + (c - d)
+        &= a + (-b + (c - d)) && \text{associativity} \\
+        &= a + ((c - d) - b) && \text{commutativity} \\
+        &= a + ((-d + c) - b) && \text{commutativity} \\
+        &= a + (-d + (c - b)) && \text{associativity} \\
+        &= (a - d) + (c - b) && \text{associativity}
+    \end{align*}
+
   \item $(a - b) + (c - d) = -(b + d) + (a + c)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a - b) + (c - d)
+        &= (-b + a) + (c - d) && \text{commutativity} \\
+        &= -b + (a + (c - d)) && \text{associativity} \\
+        &= -b + ((a + c) - d) && \text{associativity} \\
+        &= -b + (-d + (a + c)) && \text{commutativity} \\
+        &= (-b - d) + (a + c) && \text{associativity} \\
+        &= -(b + d) + (a + c) && \text{N5}
+    \end{align*}
+
   \item $(a - b) + (c - d) = -(b + d) - (-a - c)$
+
+    \emph{Solution.}
+    \begin{align*}
+      (a - b) + (c - d)
+        &= (-b + a) + (c - d) && \text{commutativity} \\
+        &= -b + (a + (c - d)) && \text{associativity} \\
+        &= -b + ((a + c) - d) && \text{associativity} \\
+        &= -b + (-d + (a + c)) && \text{commutativity} \\
+        &= (-b - d) + (a + c) && \text{associativity} \\
+        &= -(b + d) + (a + c) && \text{N5} \\
+        &= -(b + d) + (-(-a) - (-c)) && \text{N4} \\
+        &= -(b + d) - (-a - c) && \text{N5}
+    \end{align*}
+
   \item $((x + y) + z) + w = (x + z) + (y + w)$
+
+    \emph{Solution.}
+    \begin{align*}
+      ((x + y) + z) + w
+        &= (x + (y + z)) + w && \text{associativity} \\
+        &= (x + (z + y)) + w && \text{commutativity} \\
+        &= ((x + z) + y) + w && \text{associativity} \\
+        &= (x + z) + (y + w) && \text{associativity}
+    \end{align*}
+
   \item $(x - y) - (z - w) = (x + w) - y - z$
+
+    \emph{Solution.}
+    \begin{align*}
+      (x - y) - (z - w)
+        &= x + (-y - (z - w)) && \text{associativity} \\
+        &= x + (-y + (-z - (-w))) && \text{N5} \\
+        &= x + ((-y - z) - (-w)) && \text{associativity} \\
+        &= x + ((-y - z) + w) && \text{N4} \\
+        &= x + (w + (-y - z)) && \text{commutativity} \\
+        &= (x + w) + (-y - z) && \text{associativity} \\
+        &= (x + w) - y - z && \text{associativity}
+    \end{align*}
+
   \item $(x - y) - (z - w) = (x - z) + (w - y)$
   \item Show that $-(a + b + c) = -a + (-b) + (-c)$.
   \item Show that $-(a - b - c) = -a + b + c$.
